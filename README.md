@@ -1,6 +1,6 @@
 # nur-packages
 
-[![Build Status](https://travis-ci.com/NoRedInk/nur-packages.svg?branch=master)](https://travis-ci.com/NoRedInk/nur-packages)
+[![Build Status](https://travis-ci.org/NoRedInk/nur-packages.svg?branch=master)](https://travis-ci.org/NoRedInk/nur-packages)
 
 This repo is for storing Nix expressions used by multiple internal repositories at NoRedInk.
 
