@@ -4,8 +4,11 @@ sudo: false
 
 env:
   global:
-    - CACHIX_CACHE=
-    - NUR_REPO=<YOUR_NUR_REPO_NAME_HERE>
+    # This should be set by Travis environment variable
+    # - CACHIX_CACHE=
+    # As more of a staging repo before pushing packages upstream,
+    # this repo does not participate in the NUR collection of repos.
+    # - NUR_REPO=
 
 matrix:
   include:
@@ -29,6 +32,6 @@ script:
 
 after_success:
   - if [ -n "${CACHIX_CACHE}" ]; then cachix push "${CACHIX_CACHE}" $outs; fi
-  - if [ "false" = "${TRAVIS_PULL_REQUEST}" -a "master" = "${TRAVIS_BRANCH}" ]; then
+  - if [ "false" = "${TRAVIS_PULL_REQUEST}" -a "master" = "${TRAVIS_BRANCH}" -a -n "${NUR_REPO}"]; then
       curl -XPOST "https://nur-update.herokuapp.com/update?repo=${NUR_REPO}"; fi
 
