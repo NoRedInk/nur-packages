@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   name = "adr-tools-${version}";
-  version = "3.0.0";
+  version = "3.0.0-f36daae";
 
   src = fetchFromGitHub {
-    owner = "npryce";
+    owner = "NoRedInk";
     repo = "adr-tools";
-    rev = version;
-    sha256 = "1igssl6853wagi5050157bbmr9j12703fqfm8cd7gscqwjghnk14";
+    rev = "f36daae4d65cf55ca8fdba6f23bba779896fa847";
+    sha256 = "0g2hc8sf61cfn43c32yx2rivmjhiyy6jxaprq69vrr28a6z1gdz0";
   };
 
   buildInputs = [ bashInteractive ];
