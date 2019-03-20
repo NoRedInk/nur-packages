@@ -21,6 +21,11 @@ install:
  # Use a known revision of nixpkgs that can build cachix until
  # https://github.com/NixOS/nixpkgs/issues/53067 is fixed.
  - if [ -n "${CACHIX_CACHE}" ]; then nix-env -i cachix --file https://github.com/NixOS/nixpkgs/archive/889c72032f8595fcd7542c6032c208f6b8033db6.tar.gz; fi
+ - if [ -n "${CACHIX_CACHE}" -a "osx" = "${TRAVIS_OS_NAME}" ]; then
+     echo "trusted-users = root $USER" | sudo tee -a /etc/nix/nix.conf;
+     sudo launchctl stop org.nixos.nix-daemon;
+     sudo launchctl start org.nixos.nix-daemon;
+   fi
  - if [ -n "${CACHIX_CACHE}" ]; then cachix use "${CACHIX_CACHE}"; fi
  - nix-channel --add "${NIX_CHANNEL}" nixpkgs
  - travis_retry nix-channel --update
