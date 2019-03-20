@@ -8,17 +8,12 @@ sudo: false
 
 env:
   global:
+    - NIX_CHANNEL=https://nixos.org/channels/nixpkgs-unstable
     # This should be set by Travis environment variable
     # - CACHIX_CACHE=
     # As more of a staging repo before pushing packages upstream,
     # this repo does not participate in the NUR collection of repos.
     # - NUR_REPO=
-
-matrix:
-  include:
-    - env: NIX_CHANNEL=https://nixos.org/channels/nixpkgs-unstable
-    - env: NIX_CHANNEL=https://nixos.org/channels/nixos-unstable
-    - env: NIX_CHANNEL=https://nixos.org/channels/nixos-18.09
 
 install:
  - nix --version
