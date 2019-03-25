@@ -15,5 +15,5 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   adr-tools = pkgs.callPackage ./pkgs/adr-tools { };
-  elm-graphql = (pkgs.callPackage ./pkgs/elm-graphql { })."@dillonkearns/elm-graphql-3.2.0";
+  elm-graphql = pkgs.callPackage ./pkgs/elm-graphql { };
 }
